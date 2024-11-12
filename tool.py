@@ -3,13 +3,18 @@ from __future__ import annotations
 import inspect
 import json
 import traceback
-from types import NoneType
-from typing import (Annotated, Any, Awaitable, Callable, Generic, ParamSpec,
+#from types import NoneType
+from typing_extensions import ParamSpec, is_typeddict
+
+from typing import (Annotated, Any, Awaitable, Callable, Generic,
                     TypedDict, TypeVar, get_args, get_origin, get_type_hints,
-                    is_typeddict, overload)
+                    overload)
+
 
 from litellm.types.completion import (ChatCompletionMessageToolCallParam,
                                       ChatCompletionToolMessageParam)
+
+NoneType = type(None)
 
 __all__ = (
     "tool",
@@ -20,8 +25,8 @@ __all__ = (
 P = ParamSpec("P")
 R = TypeVar("R")
 
-JSONifiable = dict | list | str | int | float | bool | None
-
+#JSONifiable = dict | list | str | int | float | bool | None
+JSONifiable = list
 
 class Toolbox:
     def __init__(self, *tools: WrappedTool):
