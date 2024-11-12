@@ -22,7 +22,8 @@ async def explain_plot(
     model: str,
     messages: list[dict],
     plot_widget: go.FigureWidget,
-    toolbox: Toolbox | None = None,
+    #toolbox: Toolbox | None = None,
+    toolbox: Toolbox = None,
 ) -> None:
     # Make sure not to mutate whatever we were given
     messages = [*messages]
